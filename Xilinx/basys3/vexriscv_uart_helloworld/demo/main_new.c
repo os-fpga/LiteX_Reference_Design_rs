@@ -52,113 +52,6 @@ static char *readstr(void)
 	return NULL;
 }
 
-
-static void test_ram(void)
-{		uint32_t x,addr,z,y;
-    addr= 0x50000000;
-
-//-----All zeroes to memory-------------------
-
-    for(x=0; x<100; x++)
-    {	y=0;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(z==y)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-//-----All ones to memory-------------------
-
-    for(x=0; x<100; x++)
-    {	y=1;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(z==y)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-//-----Writing 0 to 100 to memory-------------------
-
-    for(x=0; x<100; x++)
-    {
-		csr_write_simple(x , addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(x==z)
-		{
-			printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-//-----Writing FFFFFFF to 100 to memory-------------------
-
-    for(x=0; x<100; x++)
-    {	y=0xaaaaaaa;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-}
-
-
 static char *get_token(char **str)
 {
 	char *c, *d;
@@ -200,6 +93,22 @@ static void help(void)
 #endif
 }
 
+
+
+/*----------------------------Manual test-------------------------------------------*/
+
+
+
+static void test(void)
+{
+
+
+	while(1) {
+		uart_rxtx_write('z');
+		msleep(80);
+	}
+
+}
 /*-----------------------------------------------------------------------*/
 /* Commands                                                              */
 /*-----------------------------------------------------------------------*/
@@ -275,7 +184,7 @@ static void console_service(void)
 {
 	char *str;
 	char *token;
-
+	test();
 	str = readstr();
 	if(str == NULL) return;
 	token = get_token(&str);
@@ -308,8 +217,8 @@ int main(void)
 
 	help();
 	prompt();
-	test_ram();
-		while(1) {
+
+	while(1) {
 		console_service();
 	}
 
