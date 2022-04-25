@@ -52,141 +52,6 @@ static char *readstr(void)
 	return NULL;
 }
 
-
-static void test(void)
-{		uint32_t x,addr,addr_2,z,y;
-    addr= 0x50000000;
-	addr_2= 0x50000000;
-	
-//	enable sim_trace
-	//csr_write_simple(1,0x82000000);
-//	sim_trace_enable_write(1);
-//-----All zeroes to memory-------------------
-
-    for(x=0; x<10; x++)
-    {	y=0;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(z==y)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-//-----All ones to memory-------------------
-
-    for(x=0; x<10; x++)
-    {	y=1;
-		csr_write_simple(y, addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(z==y)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-//-----Writing 0 to 100 to memory-------------------
-
-    for(x=0; x<20; x++)
-    {
-		csr_write_simple(x , addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(x==z)
-		{
-			printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-//-----Writing FFFFFFF to 100 to memory-------------------
-
-    for(x=0; x<20; x++)
-    {	y=0xaaaaaaa;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-	    for(x=0; x<20; x++)
-    {	y=0xfffffff;
-		csr_write_simple(y, addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-//	sim_trace_enable_write(0);
-
-}
-
-
 static char *get_token(char **str)
 {
 	char *c, *d;
@@ -228,6 +93,54 @@ static void help(void)
 #endif
 }
 
+
+
+/*----------------------------Manual test-------------------------------------------*/
+
+
+
+static void test(void)
+{
+	uint32_t value_1,value_2,value_3, addr,rvalue;
+	value_1 =0xdeadbeef;
+	value_2 =0xaaaaaaaa;
+	value_3 =0x55555555;
+	addr= 0xf0020000;
+	// enable sim_trace
+	//csr_write_simple(1,0x82000000);
+	sim_trace_enable_write(1);
+	// write to Peripheral IP reg
+
+	rvalue = csr_read_simple(addr);
+	csr_write_simple(value_1,addr);
+	//printf("Writing value 0x%08lx at 0x%08lx\n\n",value, addr);
+	printf("Writing value 0x%08lx for 0xf0021008\n\n",value_1);
+	// Read from Peripheral IP reg
+	rvalue = csr_read_simple(addr);
+
+	csr_write_simple(value_2 ,addr+4);
+	//printf("Writing value 0x%08lx at 0x%08lx\n\n",value, addr);
+	printf("Writing value 0x%08lx for 0xf0021008\n\n",value_2);
+	// Read from Peripheral IP reg
+	rvalue = csr_read_simple(addr+4);
+	printf("Reading value 0x%08lx before writing \n\n",rvalue);
+	//csr_write_simple(value,addr);
+	csr_write_simple(value_3,addr+8);
+	//printf("Writing value 0x%08lx at 0x%08lx\n\n",value, addr);
+	printf("Writing value 0x%08lx for 0xf0021008\n\n",value_3);
+	// Read from Peripheral IP reg
+	// rvalue = csr_read_simple(addr);
+	rvalue = csr_read_simple(addr+8);
+	//printf("Reading value 0x%08lx at 0x%08lx\n\n",rvalue, addr);
+	printf("Reading value 0x%08lx after writing\n\n",rvalue);
+	
+	// disable sim_trace
+	//csr_write_simple(0,0x82000000);
+	sim_trace_enable_write(0);
+	// call sim_finish
+	//csr_write_simple(1,0x82001000);
+	sim_finish_finish_write(1);
+}
 /*-----------------------------------------------------------------------*/
 /* Commands                                                              */
 /*-----------------------------------------------------------------------*/
@@ -303,7 +216,7 @@ static void console_service(void)
 {
 	char *str;
 	char *token;
-
+	test();
 	str = readstr();
 	if(str == NULL) return;
 	token = get_token(&str);
@@ -334,12 +247,12 @@ int main(void)
 #endif
 	uart_init();
 
-//	help();
-//	prompt();
-	test();
-//		while(1) {
-//		console_service();
-//	}
-//
+	help();
+	prompt();
+
+	while(1) {
+		console_service();
+	}
+
 	return 0;
 }

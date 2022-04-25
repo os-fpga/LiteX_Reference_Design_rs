@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <unistd.h>
+
 
 #include <irq.h>
 #include <libbase/uart.h>
@@ -52,141 +55,6 @@ static char *readstr(void)
 	return NULL;
 }
 
-
-static void test(void)
-{		uint32_t x,addr,addr_2,z,y;
-    addr= 0x50000000;
-	addr_2= 0x50000000;
-	
-//	enable sim_trace
-	//csr_write_simple(1,0x82000000);
-//	sim_trace_enable_write(1);
-//-----All zeroes to memory-------------------
-
-    for(x=0; x<10; x++)
-    {	y=0;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(z==y)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-//-----All ones to memory-------------------
-
-    for(x=0; x<10; x++)
-    {	y=1;
-		csr_write_simple(y, addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(z==y)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-//-----Writing 0 to 100 to memory-------------------
-
-    for(x=0; x<20; x++)
-    {
-		csr_write_simple(x , addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(x==z)
-		{
-			printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-//-----Writing FFFFFFF to 100 to memory-------------------
-
-    for(x=0; x<20; x++)
-    {	y=0xaaaaaaa;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-	    for(x=0; x<20; x++)
-    {	y=0xfffffff;
-		csr_write_simple(y, addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-//	sim_trace_enable_write(0);
-
-}
-
-
 static char *get_token(char **str)
 {
 	char *c, *d;
@@ -228,6 +96,63 @@ static void help(void)
 #endif
 }
 
+
+
+// Driver code to test above function
+//int main()
+//{
+//	int i;
+//	for (i = 0; i < 10; i++) {
+//		// delay of one second
+//		delay(1);
+//		printf("%d seconds have passed\n", i + 1);
+//	}
+//	return 0;
+//}
+
+
+static void test_2(void)
+{
+		uart_rxtx_write(' ');
+		uart_rxtx_write('H');
+		uart_rxtx_write('e');
+		uart_rxtx_write('l');
+		uart_rxtx_write('l');
+		uart_rxtx_write('o');
+		uart_rxtx_write('_');
+		uart_rxtx_write('w');
+		uart_rxtx_write('o');
+		uart_rxtx_write('r');
+		uart_rxtx_write(123456789);
+		uart_rxtx_write('l');
+		uart_rxtx_write('d');
+		uart_rxtx_write(' ');
+}
+/*----------------------------Manual test-------------------------------------------*/
+static void test(void)
+{
+	uint32_t value, addr,rvalue,x ;
+	value=0x3FFFFFFF;
+	// enable sim_trace
+	//csr_write_simple(1,0x82000000);
+//	sim_trace_enable_write(1);
+
+	csr_write_simple(127, 0x50000000);
+
+	csr_write_simple(128, 0x50000008);
+
+	csr_write_simple(511, 0x50000016);
+	
+
+	csr_write_simple(value, 0x50000000);
+
+
+//	sim_trace_enable_write(0);
+	// call sim_finish
+	//csr_write_simple(1,0x82001000);
+//	sim_finish_finish_write(1);
+
+}
 /*-----------------------------------------------------------------------*/
 /* Commands                                                              */
 /*-----------------------------------------------------------------------*/
@@ -303,7 +228,7 @@ static void console_service(void)
 {
 	char *str;
 	char *token;
-
+	test();
 	str = readstr();
 	if(str == NULL) return;
 	token = get_token(&str);
@@ -333,13 +258,17 @@ int main(void)
 	irq_setie(1);
 #endif
 	uart_init();
-
+//	test();
 //	help();
 //	prompt();
+	test_2();
 	test();
-//		while(1) {
+	test_2();
+	test();
+	test_2();
+
+//	while(1) {
 //		console_service();
-//	}
-//
+//		}
 	return 0;
 }

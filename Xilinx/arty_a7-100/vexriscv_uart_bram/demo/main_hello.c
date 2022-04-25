@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <unistd.h>
+
 
 #include <irq.h>
 #include <libbase/uart.h>
@@ -52,141 +55,6 @@ static char *readstr(void)
 	return NULL;
 }
 
-
-static void test(void)
-{		uint32_t x,addr,addr_2,z,y;
-    addr= 0x50000000;
-	addr_2= 0x50000000;
-	
-//	enable sim_trace
-	//csr_write_simple(1,0x82000000);
-//	sim_trace_enable_write(1);
-//-----All zeroes to memory-------------------
-
-    for(x=0; x<10; x++)
-    {	y=0;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(z==y)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-//-----All ones to memory-------------------
-
-    for(x=0; x<10; x++)
-    {	y=1;
-		csr_write_simple(y, addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(z==y)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-//-----Writing 0 to 100 to memory-------------------
-
-    for(x=0; x<20; x++)
-    {
-		csr_write_simple(x , addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(x==z)
-		{
-			printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-//-----Writing FFFFFFF to 100 to memory-------------------
-
-    for(x=0; x<20; x++)
-    {	y=0xaaaaaaa;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-	    for(x=0; x<20; x++)
-    {	y=0xfffffff;
-		csr_write_simple(y, addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-//	sim_trace_enable_write(0);
-
-}
-
-
 static char *get_token(char **str)
 {
 	char *c, *d;
@@ -228,6 +96,25 @@ static void help(void)
 #endif
 }
 
+
+
+/*----------------------------Manual test-------------------------------------------*/
+static void test(void)
+{
+		uart_rxtx_write(' ');
+		uart_rxtx_write('H');
+		uart_rxtx_write('e');
+		uart_rxtx_write('l');
+		uart_rxtx_write('l');
+		uart_rxtx_write('o');
+		uart_rxtx_write('_');
+		uart_rxtx_write('w');
+		uart_rxtx_write('o');
+		uart_rxtx_write('r');
+		uart_rxtx_write('l');
+		uart_rxtx_write('d');
+		uart_rxtx_write(' ');
+}
 /*-----------------------------------------------------------------------*/
 /* Commands                                                              */
 /*-----------------------------------------------------------------------*/
@@ -303,7 +190,7 @@ static void console_service(void)
 {
 	char *str;
 	char *token;
-
+//	test();
 	str = readstr();
 	if(str == NULL) return;
 	token = get_token(&str);
@@ -333,13 +220,23 @@ int main(void)
 	irq_setie(1);
 #endif
 	uart_init();
-
+	test();
 //	help();
 //	prompt();
-	test();
-//		while(1) {
-//		console_service();
+//	test();
+//	test();
+//	test();
+
+//	while(1) {
+////		console_service();
+//		if(x<2){
+//			x=x+1;
+//			test();
+////			printf("Hello C demo = %d, ...\n", x);
+//		}
+//
 //	}
+////	test();
 //
 	return 0;
 }

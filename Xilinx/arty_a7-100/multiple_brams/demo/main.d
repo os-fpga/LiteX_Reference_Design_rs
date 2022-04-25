@@ -1,4 +1,4 @@
-donut.o: donut.c \
+main.o: main.c \
  /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/tinystdio/stdio.h \
  /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include/inttypes.h \
  /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include/newlib.h \
@@ -24,6 +24,13 @@ donut.o: donut.c \
  /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include/string.h \
  /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include/strings.h \
  /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include/sys/string.h \
+ /home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/cores/cpu/vexriscv/irq.h \
+ /home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/cores/cpu/vexriscv/system.h \
+ /home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/cores/cpu/vexriscv/csr-defs.h \
+ /home/users/bilal.ahmed/rs_boards/build/digilent_basys3/software/include/generated/soc.h \
+ /home/users/bilal.ahmed/rs_boards/build/digilent_basys3/software/include/generated/csr.h \
+ /home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/software/include/hw/common.h \
+ /home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/software/libbase/uart.h \
  /home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/software/libbase/console.h
 
 /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/tinystdio/stdio.h:
@@ -75,5 +82,19 @@ donut.o: donut.c \
 /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include/strings.h:
 
 /home/users/bilal.ahmed/litex_dev/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include/sys/string.h:
+
+/home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/cores/cpu/vexriscv/irq.h:
+
+/home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/cores/cpu/vexriscv/system.h:
+
+/home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/cores/cpu/vexriscv/csr-defs.h:
+
+/home/users/bilal.ahmed/rs_boards/build/digilent_basys3/software/include/generated/soc.h:
+
+/home/users/bilal.ahmed/rs_boards/build/digilent_basys3/software/include/generated/csr.h:
+
+/home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/software/include/hw/common.h:
+
+/home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/software/libbase/uart.h:
 
 /home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/software/libbase/console.h:

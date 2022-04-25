@@ -8,7 +8,7 @@ ifdef WITH_CXX
 	OBJECTS += hellocpp.o
 endif
 
-all: demo.bin 
+all: demo.bin
 
 # pull in dependency info for *existing* .o files
 -include $(OBJECTS:.o=.d)
@@ -29,7 +29,7 @@ demo.elf: $(OBJECTS)
 main.o: main.c
 	$(compile)
 
-crt0.o: /home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/cores/cpu/vexriscv/crt0.S
+crt0.o: $(CPU_DIRECTORY)/crt0.S
 	$(assemble)
 
 donut.o: CFLAGS += -w

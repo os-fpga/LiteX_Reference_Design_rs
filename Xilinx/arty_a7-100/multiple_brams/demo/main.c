@@ -56,7 +56,7 @@ static char *readstr(void)
 static void test(void)
 {		uint32_t x,addr,addr_2,z,y;
     addr= 0x50000000;
-	addr_2= 0x50000000;
+	addr_2= 0x50000100;
 	
 //	enable sim_trace
 	//csr_write_simple(1,0x82000000);
@@ -76,14 +76,14 @@ static void test(void)
 			printf("------Data MAtches--------");
 	    	printf("\n");
 		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
+//		else
+//		{	printf("Data written: %lu", y);
+//			printf("\n");
+//			printf("Data read: %lu", z);
+//	    	printf("\n");
+//			printf("------Data does not Matche--------");
+//	    	printf("\n");
+//		}
     }
 
 //-----All ones to memory-------------------
@@ -101,87 +101,64 @@ static void test(void)
 			printf("------Data MAtches--------");
 	    	printf("\n");
 		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
+//		else
+//		{	printf("Data written: %lu", y);
+//			printf("\n");
+//			printf("Data read: %lu", z);
+//	    	printf("\n");
+//			printf("------Data does not Matche--------");
+//	    	printf("\n");
+//		}
     }
 
 //-----Writing 0 to 100 to memory-------------------
 
-    for(x=0; x<20; x++)
-    {
-		csr_write_simple(x , addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(x==z)
-		{
-			printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", x);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-//-----Writing FFFFFFF to 100 to memory-------------------
-
-    for(x=0; x<20; x++)
-    {	y=0xaaaaaaa;
-		csr_write_simple(y, addr+(4*x));
-		z=csr_read_simple(addr+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
-
-	    for(x=0; x<20; x++)
-    {	y=0xfffffff;
-		csr_write_simple(y, addr_2+(4*x));
-		z=csr_read_simple(addr_2+(4*x));
-		if(y==z)
-		{
-			printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data MAtches--------");
-	    	printf("\n");
-		}
-		else
-		{	printf("Data written: %lu", y);
-			printf("\n");
-			printf("Data read: %lu", z);
-	    	printf("\n");
-			printf("------Data does not Matche--------");
-	    	printf("\n");
-		}
-    }
+//    for(x=0; x<20; x++)
+//    {
+//		csr_write_simple(x , addr_2+(4*x));
+//		z=csr_read_simple(addr_2+(4*x));
+//		if(x==z)
+//		{
+//			printf("Data written: %lu", x);
+//			printf("\n");
+//			printf("Data read: %lu", z);
+//	    	printf("\n");
+//			printf("------Data MAtches--------");
+//	    	printf("\n");
+//		}
+//		else
+//		{	printf("Data written: %lu", x);
+//			printf("\n");
+//			printf("Data read: %lu", z);
+//	    	printf("\n");
+//			printf("------Data does not Matche--------");
+//	    	printf("\n");
+//		}
+//    }
+////-----Writing FFFFFFF to 100 to memory-------------------
+//
+//    for(x=0; x<20; x++)
+//    {	y=0xaaaaaaa;
+//		csr_write_simple(y, addr+(4*x));
+//		z=csr_read_simple(addr+(4*x));
+//		if(y==z)
+//		{
+//			printf("Data written: %lu", y);
+//			printf("\n");
+//			printf("Data read: %lu", z);
+//	    	printf("\n");
+//			printf("------Data MAtches--------");
+//	    	printf("\n");
+//		}
+//		else
+//		{	printf("Data written: %lu", y);
+//			printf("\n");
+//			printf("Data read: %lu", z);
+//	    	printf("\n");
+//			printf("------Data does not Matche--------");
+//	    	printf("\n");
+//		}
+//    }
 //	sim_trace_enable_write(0);
 
 }
