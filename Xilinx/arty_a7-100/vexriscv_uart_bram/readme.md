@@ -1,8 +1,7 @@
-# Create a vexriscv SoC with uart and Axi_gpio intgerated onto the SoC.
+# Method 1 to load demo.bin on the fly.
 
 ```
-./../litex_dev/litex-boards/litex_boards/targets/digilent_arty.py --integrated-main-ram-size=0x10000 --variant=a7-100 --cpu-type=vexriscv --axigpio --build--load --uart-name=serial
-
+./../litex_dev/litex-boards/litex_boards/targets/digilent_arty.py --integrated-main-ram-size=0x10000 --variant a7-100 --cpu-type=vexriscv --cpu-type=vexriscv --build--load --uart-name=serial --axiram
 
 ```
 ## Generate the bin file

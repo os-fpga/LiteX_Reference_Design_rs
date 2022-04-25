@@ -1,7 +1,7 @@
 # Vexriscv SoC with a Uart integrated.
 
 ```
-./../litex_dev/litex-boards/litex_boards/targets/digilent_basys3.py --integrated-main-ram-size=0x10000 --cpu-type=vexriscv--build--load --uart-name=serial
+./../litex_dev/litex-boards/litex_boards/targets/digilent_arty.py --integrated-main-ram-size=0x10000 --variant a7-100  --cpu-type=vexriscv--build--load --uart-name=serial
 
 ```
 ## Generate the bin file
