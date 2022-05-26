@@ -24,7 +24,7 @@ litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --ram-init=demo
 
 
 ## Output:
-![hello_sim.png](/home/users/moin.ijaz/Pictures/hello_sim.png "Optional title")
+![hello_sim.png](./../../Pictures/hello_sim.png "Optional title")
 
 ## 2. Hardware:
 Connect your Digilent Arty a7-100 board with your machine. We will be using the same design which we used in simulation to verify on the board. The following board file written in python creates the same SoC and later build and load it onto the Arty board.
@@ -42,7 +42,7 @@ The litex_term tool load the board with the application binary through the comm 
 litex_term /dev/ttyUSB1 --kernel=demo.bin
 ```
 ## Output:
-![hello_hard.png](/home/users/moin.ijaz/Pictures/hello_hard.png "Optional title")
+![hello_hard.png](./../../Pictures/hello_hard.png "Optional title")
 
 ## Application
 In this application code we print a Hello world to the Uart console(Litex Console).

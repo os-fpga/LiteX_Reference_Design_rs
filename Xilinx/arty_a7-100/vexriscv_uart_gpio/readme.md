@@ -23,7 +23,7 @@ Run the following command to execute your applicationcode onto the processor:
 litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --axigpio --ram-init=demo.bin --sim-debug
 ```
 ### Output:
-![gpio_out.png](/home/users/moin.ijaz/Pictures/gpio_out.png "Optional title")
+![gpio_out.png](./../../Pictures/gpio_out.png "Optional title")
 
 ## 2. Hardware
 Connect your Digilent Arty a7-100 board with your machine. We will be using the same design which we used in simulation to verify on the board. The following board file written in python creates the same SoC and later build and load it onto the Arty board.
@@ -48,7 +48,7 @@ litex_term /dev/ttyUSB1 --kernel=demo.bin
 ```
 
 ## Output:
-![gpio_hard.png](/home/users/moin.ijaz/Pictures/gpio_hard.png "Optional title")
+![gpio_hard.png](./../../Pictures/gpio_hard.png "Optional title")
 
 ## Application
 This test performs the write operation on specific addresses and the data is passed to GPIO OUT, which is mapped to the LEDs on the board. This can be verified using the GTKwave.

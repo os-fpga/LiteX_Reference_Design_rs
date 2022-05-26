@@ -23,7 +23,7 @@ Run the following command to execute your application:
 litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --ram-init=demo.bin --sim-debug --axiram
 ```
 ### Output:
-![ram.png](/home/users/moin.ijaz/Pictures/ram.png "Optional title")
+![ram.png](./../../Pictures/ram_sim.png "Optional title")
 
 ## 2. Hardware
 Connect your Digilent Arty a7-100 board with your machine. We will be using the same design which we used in simulation to verify on the board. The following board file written in python creates the same SoC and later build and load it onto the Arty board.
@@ -49,7 +49,7 @@ litex_term /dev/ttyUSB1 --kernel=demo.bin
 ```
 
 ## Output:
-![ram.png](/home/users/moin.ijaz/Pictures/ram.png "Optional title")
+![ram.png](./../../Pictures/ram_hard.png "Optional title")
 
 ## Application
 This test does multiple reads and writes onto the axi based ram, this is done through detailed tests.
