@@ -82,7 +82,7 @@ static void prompt(void)
 
 static void help(void)
 {
-	puts("\nLiteX minimal demo app built "__DATE__" "__TIME__"\n");
+	puts("\nLiteX minimal demo app built \n"__DATE__" "__TIME__"\n");
 	puts("Available commands:");
 	puts("help               - Show this command");
 	puts("reboot             - Reboot CPU");
@@ -101,9 +101,27 @@ static void help(void)
 /*----------------------------Manual test-------------------------------------------*/
 static void hello_World(void)
 {
-	printf("Hello World from Litex_RS \n");
+	printf("\n\n");
+	printf("======================");
+	printf("\n");
+	printf("------TEST-STATUS-----");
+	printf("\n");
+	printf("======================");
+	printf("\n\n");
 
+	printf("HELLO WORLD");
+	printf("\n\n");
+	printf("TEST PASSED");
+	printf("\n\n");
+
+	printf("======================");
+	printf("\n");
+	printf("---------END----------");
+	printf("\n");
+	printf("======================");
+	printf("\n\n");
 }
+
 /*-----------------------------------------------------------------------*/
 /* Commands                                                              */
 /*-----------------------------------------------------------------------*/
@@ -145,31 +163,31 @@ static void led_cmd(void)
 }
 #endif
 
-extern void donut(void);
+	extern void donut(void);
 
-static void donut_cmd(void)
-{
-	printf("Donut demo...\n");
-	donut();
-}
+	static void donut_cmd(void)
+	{
+		printf("Donut demo...\n");
+		donut();
+	}
 
-extern void helloc(void);
+	extern void helloc(void);
 
-static void helloc_cmd(void)
-{
-	printf("Hello C demo...\n");
-	helloc();
-}
+	static void helloc_cmd(void)
+	{
+		printf("Hello C demo...\n");
+		helloc();
+	}
 
-#ifdef WITH_CXX
-extern void hellocpp(void);
+	#ifdef WITH_CXX
+	extern void hellocpp(void);
 
-static void hellocpp_cmd(void)
-{
-	printf("Hello C++ demo...\n");
-	hellocpp();
-}
-#endif
+	static void hellocpp_cmd(void)
+	{
+		printf("Hello C++ demo...\n");
+		hellocpp();
+	}
+	#endif
 
 /*-----------------------------------------------------------------------*/
 /* Console service / Main                                                */
@@ -207,16 +225,16 @@ int main(void)
 	irq_setmask(0);
 	irq_setie(1);
 #endif
-	uart_init();
+//	uart_init();
 	hello_World();
-	help();
+	printf("\n");
+//	help();
 	prompt();
 
 
-	while(1) {
+	while(1)
+	{
 		console_service();
-		}
-
 	}
 
 	return 0;

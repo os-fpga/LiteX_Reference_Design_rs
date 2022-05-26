@@ -82,7 +82,7 @@ static void prompt(void)
 
 static void help(void)
 {
-	puts("\nLiteX minimal demo app built "__DATE__" "__TIME__"\n");
+	puts("\nLiteX minimal demo app built \n"__DATE__" "__TIME__"\n");
 	puts("Available commands:");
 	puts("help               - Show this command");
 	puts("reboot             - Reboot CPU");
@@ -101,49 +101,38 @@ static void help(void)
 /*----------------------------Manual test-------------------------------------------*/
 static void test(void)
 {
-	uint32_t value, addr,rvalue,x ;
-	value=0x3FFFFFFF;
+	uint32_t value;
+	value = 0xFFFFFFFF;
 	// enable sim_trace
 	//csr_write_simple(1,0x82000000);
-//	sim_trace_enable_write(1);
+	// sim_trace_enable_write(1);
 
 
 	csr_write_simple(127, 0x50000000);
-
+	printf("\n");
 	printf("0 to 7 LEDs glowing represent 127");
 	printf("\n");
 
-	csr_write_simple(127, 0x50000000);
-	printf("\n");
-
-	printf("8th LED glowing represent 128");
-	printf("\n");
-
-
 	csr_write_simple(128, 0x50000008);
 	printf("\n");
-
 	printf("0 to 9 LEDs glowing represent 511");
 	printf("\n");
 
 	csr_write_simple(511, 0x50000016);
 	printf("\n");
-
 	printf("0 to 7 LEDs glowing represent 127");
 	printf("\n");
 	
-
 	csr_write_simple(value, 0x50000000);
 	printf("\n");
-
-	printf("ALL LEDs glowing represent 0xFFFFFFFF");
+	printf("ALL LEDs glowing represents 0xFFFFFFFF");
 	printf("\n");
 
 
-//	sim_trace_enable_write(0);
+	// sim_trace_enable_write(0);
 	// call sim_finish
-	//csr_write_simple(1,0x82001000);
-//	sim_finish_finish_write(1);
+	// csr_write_simple(1,0x82001000);
+	// sim_finish_finish_write(1);
 
 }
 /*-----------------------------------------------------------------------*/
@@ -251,14 +240,14 @@ int main(void)
 	irq_setie(1);
 #endif
 	uart_init();
-//	test();
+	test();
 //	help();
 //	prompt();
-	test();
 
 
-//	while(1) {
+//	while(1)
+//	{
 //		console_service();
-//		}
+//	}
 	return 0;
 }
