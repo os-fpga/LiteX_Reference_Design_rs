@@ -26,19 +26,19 @@ litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --axigpio --ram
 ![gpio_out.png](/home/users/moin.ijaz/Pictures/gpio_out.png "Optional title")
 
 ## 2. Hardware
-Connect your Digilent Arty a7-100 board with your machine. We will be using the same design which we used in simulation to verify on the board. The following board file written in python creates the same SoC and later build and load it onto the Arty board.
+Connect your Digilent basys3 board with your machine. We will be using the same design which we used in simulation to verify on the board. The following board file written in python creates the same SoC and later build and load it onto the basys3 board.
 
 Note: Before using this GPIO design on hardware, we need to replace the board files with the necessary changes provided in the ``board files`` directory. 
 
 Run the following command to generate your SoC:
 ```
-./../../litex_installation/litex-boards/litex_boards/targets/digilent_arty.py --integrated-main-ram-size=0x10000 --variant=a7-100 --cpu-type=vexriscv --axigpio --build --load --uart-name=serial
+./../../litex_installation/litex-boards/litex_boards/targets/digilent_basys3.py --integrated-main-ram-size=0x10000 --cpu-type=vexriscv --axigpio --build --load --uart-name=serial
 ```
 
 Run the following command to generate .bin file from .py file:
 
 ```
-python3 ./demo/demo.py --build-path=build/digilent_arty
+python3 ./demo/demo.py --build-path=build/digilent_basys3
 ```
 
 
