@@ -12,7 +12,7 @@ from litex.soc.integration.soc import SoCRegion
 from litex.soc.interconnect.axi import *
 
 class Open(Signal): pass
-class axi_ram(Module, AutoDoc, AutoCSR):
+class axi_ram_1(Module, AutoDoc, AutoCSR):
     """Verilog RTL-based Axi_ram"""
     def __init__(self, platform, pads, default_enable=0):
         self.intro = ModuleDoc("""axi_ram: A verilog RTL-based axi_ram derived from the OpenCores.""")
@@ -99,7 +99,7 @@ class axi_ram(Module, AutoDoc, AutoCSR):
         )
 
 
-class axi_ram_1(Module, AutoDoc, AutoCSR):
+class axi_ram_2(Module, AutoDoc, AutoCSR):
     """Verilog RTL-based Axi_ram"""
     def __init__(self, platform, pads, default_enable=0):
         self.intro = ModuleDoc("""axi_ram: A verilog RTL-based axi_ram derived from the OpenCores.""")
@@ -184,4 +184,4 @@ class axi_ram_1(Module, AutoDoc, AutoCSR):
             i_s_axi_rready=bus.r.ready,
         )
         
-        platform.add_source("/home/users/bilal.ahmed/litex_dev/Litex_dev/litex/soc/cores/ip/axi_ram/axi_ram.v")
+        platform.add_source("/home/users/bilal.ahmed/litex_install/Litex_RS/litex/soc/cores/axi_multi_ram/rtl/axi_ram.v")
