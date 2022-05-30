@@ -24,9 +24,9 @@ litex_sim --cpu-type vexriscv --with-sdram --sdram-init=demo.bin --bus-standard 
 
 
 ## Output:
-![sdram_sim1.png](/home/users/moin.ijaz/Pictures/sdram_sim1.png "Optional title")
+![sdram_sim1.png](./../../Pictures/sdram_sim1.png "Optional title")
 
-![sdram_sim2.png](/home/users/moin.ijaz/Pictures/sdram_sim2.png "Optional title")
+![sdram_sim2.png](./../../Pictures/sdram_sim2.png "Optional title")
 
 ## 2. Hardware:
 Connect your Digilent Arty A7-100 board with your machine. We will be using the same design which we used in simulation to verify on the board. The following board file written in python creates the same SoC and later build and load it onto the Arty board.
@@ -44,8 +44,8 @@ The litex_term tool load the board with the application binary through the COM p
 litex_term /dev/ttyUSB2 --kernel=demo.bin
 ```
 ## Output:
-![sdram_hard1.png](/home/users/moin.ijaz/Pictures/sdram_hard1.png "Optional title")
-![sdram_hard2.png](/home/users/moin.ijaz/Pictures/sdram_hard2.png "Optional title")
+![sdram_hard1.png](./../../Pictures/sdram_hard1.png "Optional title")
+![sdram_hard2.png](./../../Pictures/sdram_hard2.png "Optional title")
 
 ## Application
 In this application code, we write and read data to the SDRAM and the results are shown on UART console (LiteX Console).
