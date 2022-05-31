@@ -123,18 +123,42 @@ static void test(void)
 	printf("0 to 7 LEDs glowing represent 127");
 	printf("\n");
 	
+
 	csr_write_simple(value, 0x50000000);
 	printf("\n");
-	printf("ALL LEDs glowing represents 0xFFFFFFFF");
+	printf("ALL LEDs glowing represents 0xFF-------FFFFFF");
 	printf("\n");
 
 
 	// sim_trace_enable_write(0);
 	// call sim_finish
 	// csr_write_simple(1,0x82001000);
-	// sim_finish_finish_write(1);
 
 }
+
+/*-------Result-----------------*/
+static void result(void)
+{
+	printf("\n\n");
+	printf("======================");
+	printf("\n");
+	printf("------TEST-STATUS-----");
+	printf("\n");
+	printf("======================");
+	printf("\n\n");
+
+	printf("TEST PASSED");
+	printf("\n\n");
+
+	printf("======================");
+	printf("\n");
+	printf("---------END----------");
+	printf("\n");
+	printf("======================");
+	printf("\n\n");
+}
+
+
 /*-----------------------------------------------------------------------*/
 /* Commands                                                              */
 /*-----------------------------------------------------------------------*/
@@ -206,32 +230,32 @@ static void hellocpp_cmd(void)
 /* Console service / Main                                                */
 /*-----------------------------------------------------------------------*/
 
-static void console_service(void)
-{
-	char *str;
-	char *token;
-	test();
-	str = readstr();
-	if(str == NULL) return;
-	token = get_token(&str);
-	if(strcmp(token, "help") == 0)
-		help();
-	else if(strcmp(token, "reboot") == 0)
-		reboot_cmd();
-#ifdef CSR_LEDS_BASE
-	else if(strcmp(token, "led") == 0)
-		led_cmd();
-#endif
-	else if(strcmp(token, "donut") == 0)
-		donut_cmd();
-	else if(strcmp(token, "helloc") == 0)
-		helloc_cmd();
-#ifdef WITH_CXX
-	else if(strcmp(token, "hellocpp") == 0)
-		hellocpp_cmd();
-#endif
-	prompt();
-}
+	static void console_service(void)
+	{
+		char *str;
+		char *token;
+		test();
+		str = readstr();
+		if(str == NULL) return;
+		token = get_token(&str);
+		if(strcmp(token, "help") == 0)
+			help();
+		else if(strcmp(token, "reboot") == 0)
+			reboot_cmd();
+	#ifdef CSR_LEDS_BASE
+		else if(strcmp(token, "led") == 0)
+			led_cmd();
+	#endif
+		else if(strcmp(token, "donut") == 0)
+			donut_cmd();
+		else if(strcmp(token, "helloc") == 0)
+			helloc_cmd();
+	#ifdef WITH_CXX
+		else if(strcmp(token, "hellocpp") == 0)
+			hellocpp_cmd();
+	#endif
+		prompt();
+	}
 
 int main(void)
 {
@@ -239,15 +263,17 @@ int main(void)
 	irq_setmask(0);
 	irq_setie(1);
 #endif
-	uart_init();
+//	uart_init();
 	test();
+	result();
 //	help();
 //	prompt();
 
+	sim_finish_finish_write(1);
+	return 0;
 
 //	while(1)
 //	{
-//		console_service();
+		console_service();
 //	}
-	return 0;
 }

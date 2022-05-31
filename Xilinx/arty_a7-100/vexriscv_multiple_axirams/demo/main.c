@@ -703,10 +703,12 @@ int main(void)
 	test7();
 	test8();
 	results();
-	while(1) 
-	{
-		console_service();
-	}
 
+//	while(1) 
+//	{
+		console_service();
+//	}
+
+	sim_finish_finish_write(1);
 	return 0;
 }

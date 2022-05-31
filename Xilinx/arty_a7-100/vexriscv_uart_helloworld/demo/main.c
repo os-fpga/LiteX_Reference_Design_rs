@@ -229,13 +229,14 @@ int main(void)
 	hello_World();
 	printf("\n");
 //	help();
-	prompt();
+//	prompt();
 
 
-	while(1)
-	{
+//	while(1)
+//	{
 		console_service();
-	}
+//	}
 
+	sim_finish_finish_write(1);
 	return 0;
 }
