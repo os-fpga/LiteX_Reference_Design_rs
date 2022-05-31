@@ -45,6 +45,7 @@ litex_term /dev/ttyUSB2 --kernel=demo.bin
 ```
 ## Output:
 ![sdram_hard1.png](./../../Pictures/sdram_hard1.png "Optional title")
+
 ![sdram_hard2.png](./../../Pictures/sdram_hard2.png "Optional title")
 
 ## Application
