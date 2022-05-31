@@ -22,7 +22,6 @@ Run the following command to execute your application code onto the processor:
 litex_sim --cpu-type vexriscv --with-sdram --sdram-init=demo.bin --bus-standard axi-lite --sim-debug
 ```
 
-
 ## Output:
 ![sdram_sim1.png](./../../Pictures/sdram_sim1.png "Optional title")
 
