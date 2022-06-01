@@ -1,0 +1,33 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
+| Date         : Fri May 27 16:56:49 2022
+| Host         : rslpt42.rapidsilicon.local running 64-bit Ubuntu 18.04.6 LTS
+| Command      : report_utilization -hierarchical -file digilent_arty_utilization_hierarchical_synth.rpt
+| Design       : digilent_arty
+| Device       : 7a100tcsg324-1
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------------+------------------+------------+------------+---------+------+------+--------+--------+--------------+
+|          Instance          |      Module      | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP48 Blocks |
++----------------------------+------------------+------------+------------+---------+------+------+--------+--------+--------------+
+| digilent_arty              |            (top) |       4804 |       4658 |     144 |    2 | 3646 |     41 |     25 |            4 |
+|   (digilent_arty)          |            (top) |       2016 |       1870 |     144 |    2 | 2320 |     24 |     17 |            0 |
+|   VexRiscv                 |         VexRiscv |       2753 |       2753 |       0 |    0 | 1289 |      1 |      8 |            4 |
+|     (VexRiscv)             |         VexRiscv |        911 |        911 |       0 |    0 | 1113 |      0 |      2 |            4 |
+|     IBusCachedPlugin_cache | InstructionCache |       1321 |       1321 |       0 |    0 |  111 |      1 |      1 |            0 |
+|     dataCache_1            |        DataCache |        521 |        521 |       0 |    0 |   65 |      0 |      5 |            0 |
+|   axi_ram                  |          axi_ram |         35 |         35 |       0 |    0 |   37 |     16 |      0 |            0 |
++----------------------------+------------------+------------+------------+---------+------+------+--------+--------+--------------+
+
+

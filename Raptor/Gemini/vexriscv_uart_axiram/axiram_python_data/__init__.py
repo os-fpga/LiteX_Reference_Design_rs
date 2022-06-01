@@ -1,0 +1,2 @@
+from litex.soc.cores.axi_ram.core_ram import axi_ram
+

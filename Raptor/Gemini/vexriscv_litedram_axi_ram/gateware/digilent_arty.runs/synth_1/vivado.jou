@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Mon May 30 11:29:08 2022
+# Process ID: 10921
+# Current directory: /home/users/moin.ijaz/SDRAM/Hardware/build/digilent_arty/gateware/digilent_arty.runs/synth_1
+# Command line: vivado -log digilent_arty.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source digilent_arty.tcl
+# Log file: /home/users/moin.ijaz/SDRAM/Hardware/build/digilent_arty/gateware/digilent_arty.runs/synth_1/digilent_arty.vds
+# Journal file: /home/users/moin.ijaz/SDRAM/Hardware/build/digilent_arty/gateware/digilent_arty.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source digilent_arty.tcl -notrace

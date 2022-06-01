@@ -1,7 +1,5 @@
 # Vexriscv SoC with UART & Multiple RAMs
-This example integrates 2 AXI based rams onto a Vexriscv SoC.
-
-
+This example integrates 2 AXI based RAMs onto a Vexriscv SoC.
 
 ### Instructions:
 Copy your demo folder from litex installation directory ``litex/litex/soc/software/demo`` and paste it inside your project directory. Use the main.c file provided in this example in the demo application and replace it with the main.c file located inside your newly copied demo folder in project directory.
@@ -18,7 +16,7 @@ Run the following command to generate .bin file from .py file:
 ```
 python3 ./demo/demo.py --build-path=build/sim
 ```
-Before running the simulation, you have to create the binary of your application code residing in demo. The python script below converts the application code to demo.bin, which is later loaded on to the ram.
+Before running the simulation, you have to create the binary of your application code residing in demo. The python script below converts the application code to demo.bin, which is later loaded on to the RAM.
 ```
 litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --ram-init=demo.bin --sim-debug --multiaxiram
 ```
@@ -43,7 +41,7 @@ python3 ./demo/demo.py --build-path=build/digilent_arty
 ```
 
 
-The litex_term tool load the board with the application binary through the comm port.
+The litex_term tool load the board with the application binary through the COM port.
 
 ```
 litex_term /dev/ttyUSB1 --kernel=demo.bin
