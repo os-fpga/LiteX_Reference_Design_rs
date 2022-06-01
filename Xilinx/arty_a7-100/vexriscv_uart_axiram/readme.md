@@ -1,5 +1,5 @@
 # Vexriscv SoC with UART & RAM
-This example integrates an AXI based ram onboarded to a Vexriscv SoC.
+This example integrates an AXI based RAM onboarded to a Vexriscv SoC.
 
 
 ### Instructions:
@@ -16,7 +16,7 @@ Run the following command to generate .bin file from .py file:
 ```
 python3 ./demo/demo.py --build-path=build/sim
 ```
-Before running the simulation, you have to create the binary of your application code residing in demo. The python script below converts the application code to demo.bin, which is later loaded on to the ram.
+Before running the simulation, you have to create the binary of your application code residing in demo. The python script below converts the application code to demo.bin, which is later loaded on to the RAM.
 
 Run the following command to execute your application:
 ```
@@ -41,7 +41,7 @@ Run the following command to generate .bin file from .py file:
 ```
 python3 ./demo/demo.py --build-path=build/digilent_arty
 ```
-The litex_term tool load the board with the application binary through the comm port.
+The litex_term tool load the board with the application binary through the COM port.
 
 
 ```

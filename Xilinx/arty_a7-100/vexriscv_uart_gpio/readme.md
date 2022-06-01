@@ -12,7 +12,7 @@ Run the following command to generate your SoC:
 ```
 litex_sim --integrated-main-ram-size=0x10000 --cpu-type=vexriscv --axigpio --no-compile-gateware --sim-debug
 ```
-Before running the simulation, you have to create the binary of your application code residing in demo. The python script below converts the application code to demo.bin, which is later loaded on to the ram.
+Before running the simulation, you have to create the binary of your application code residing in demo. The python script below converts the application code to demo.bin, which is later loaded on to the RAM.
 
 Run the following command to generate .bin file from .py file:
 ```
