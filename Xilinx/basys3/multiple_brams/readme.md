@@ -12,7 +12,7 @@ We can simulate this IP using litex_sim tool in litex.
 
 Run the following command to generate your SoC:
 ```
-litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --ram-init=demo.bin --sim-debug --multiaxiram
+litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --no-compile-gateware --sim-debug --multiaxiram
 ```
 Run the following command to generate .bin file from .py file:
 ```
