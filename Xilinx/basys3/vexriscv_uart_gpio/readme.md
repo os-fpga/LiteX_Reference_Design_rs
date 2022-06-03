@@ -20,7 +20,7 @@ python3 ./demo/demo.py --build-path=build/sim
 ```
 Run the following command to execute your applicationcode onto the processor:
 ```
-litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --axigpio --ram-init=demo.bin --sim-debug
+litex_sim --integrated-main-ram-size=0x10000 --cpu-type vexriscv --axigpio --ram-init=demo.bin --trace
 ```
 ### Output:
 ![gpio_out.png](./../../Pictures/gpio_out.png "Optional title")
